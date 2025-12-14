@@ -11,3 +11,10 @@ export function carregarDinheiro() {
     }
     return 0 
 }
+
+export function carregarDanoPorSegundo() {
+    if (localStorage.getItem("danoPorSegundo") !== null) {
+        return Number(localStorage.danoPorSegundo)
+    }
+    return 0
+}

@@ -4,16 +4,25 @@ body {
 
 header {
     display: flex;
+    flex-direction: column;
     background-color: rgb(172, 172, 172);
     width: 500px;
+    height: 70px;
     margin: auto;
     margin-bottom: 20px;
-    justify-content: center;
+    align-items: center;
 }
 
-header > p{
+p#dinheiro{
     font-size: 20px;
+    margin-top: 3px;
+    margin-bottom: -5px;
     color: gold;
+}
+
+p#dps {
+    font-size: 15px;
+    color: rgb(83, 83, 83);
 }
 
 #telaJogo {

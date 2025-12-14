@@ -1,8 +1,12 @@
 import { mineriosDesbloqueados } from "./minerios/mineriosDesbloqueados.js"
-import { salvar } from "./salvarInformacoes.js";
-import { carregarDanoPorClick, carregarDinheiro } from "./carregarInformacoes.js"
+import { salvar } from "./informacoes/salvarInformacoes.js";
+import { carregarDanoPorClick, carregarDinheiro, carregarDanoPorSegundo } from "./informacoes/carregarInformacoes.js"
 
 let danoPorClick = carregarDanoPorClick()
+
+let danoPorSegundo = carregarDanoPorSegundo()
+let danoPorSegundoHTML = document.getElementById('dpsValor')
+danoPorSegundoHTML.textContent = danoPorSegundo
 
 const botaoMinerar = document.getElementById("btnMinerar");
 botaoMinerar.addEventListener("click", minerar)
@@ -10,7 +14,7 @@ botaoMinerar.addEventListener("click", minerar)
 let minerioIdSpawnado = 1
 
 let dinheiro = carregarDinheiro()
-let dinheiroHTML = document.getElementById('dinheiro')
+let dinheiroHTML = document.getElementById('dinheiroValor')
 dinheiroHTML.textContent = dinheiro
 
 let vidaTotalMinerio = 0
