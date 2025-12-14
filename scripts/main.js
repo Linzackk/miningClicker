@@ -1,9 +1,10 @@
-import { gerarNovoMinerio } from "./base/gerarMinerio.js"
+import { gerarNovoMinerio, minerar, minerioIdSpawnado } from "./base/minerar.js"
 import { salvar } from "./informacoes/salvarInformacoes.js";
 import { carregarDanoPorClick, carregarDinheiro, carregarDanoPorSegundo } from "./informacoes/carregarInformacoes.js"
-import { minerar } from "./base/minerar.js";
+import { mineriosDesbloqueados } from "./minerios/mineriosDesbloqueados.js";
 
-let danoPorClick = carregarDanoPorClick()
+export let danoPorClick = carregarDanoPorClick()
+danoPorClick = 1
 
 let danoPorSegundo = carregarDanoPorSegundo()
 let danoPorSegundoHTML = document.getElementById('dpsValor')
@@ -16,18 +17,14 @@ export let dinheiro = carregarDinheiro()
 export let dinheiroHTML = document.getElementById('dinheiroValor')
 dinheiroHTML.textContent = dinheiro
 
-let vidaTotalMinerio = 0
-let vidaAtualMinerio = 0
-let nomeMinerio = ""
-
-let vidaAtualMinerioHTML = document.getElementById('minerioVidaAtual')
-let vidaTotalMinerioHTML = document.getElementById('minerioVidaTotal')
-let nomeMinerioHTML = document.getElementById('minerioNome')
-let imagemMinerioHTML = document.getElementById('imagemMinerio')
-
 gerarNovoMinerio(1)
 
 let tempoTotal = 0
+
+export function atualizarDinheiro() {
+    dinheiro += mineriosDesbloqueados[minerioIdSpawnado]["dinheiro"]
+    dinheiroHTML.textContent = dinheiro
+}
 
 function main() {
     setTimeout(() => {
