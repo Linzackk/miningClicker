@@ -27,7 +27,7 @@ p#dps {
 
 #telaJogo {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 80vh;
 }
@@ -35,8 +35,22 @@ p#dps {
 .telaMinerios {
     justify-content: center;
     height: 500px;
-    width: 500px;
+    width: 40%;
     background-color: gainsboro;
+}
+
+.upgrades {
+    height: 500px;
+    width: 25%;
+    text-align: center;
+    background-color: rgb(189, 189, 189);
+}
+
+.ajudantes {
+    height: 500px;
+    width: 25%;
+    text-align: center;
+    background-color: rgb(189, 189, 189);
 }
 
 .minerio {
