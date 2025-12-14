@@ -1,6 +1,6 @@
-import { minerios } from "./minerios.js"
+import { mineriosDesbloqueados } from "./minerios/mineriosDesbloqueados.js"
 
-let danoPorClick = 1;
+let danoPorClick = 50;
 
 const botaoMinerar = document.getElementById("btnMinerar");
 botaoMinerar.addEventListener("click", minerar)
@@ -14,7 +14,7 @@ let vidaTotalMinerioHTML = document.getElementById('minerioVidaTotal')
 let nomeMinerioHTML = document.getElementById('minerioNome')
 let imagemMinerioHTML = document.getElementById('imagemMinerio')
 
-gerarNovoMinerio()
+gerarNovoMinerio(1)
 
 function minerar() {
     atualizarVidaMinerio()
@@ -36,20 +36,26 @@ function verificarMinerioDestruido() {
     return false
 }
 
-function gerarNovoMinerio() {
-    let novoMinerio = escolherMinerio()
+function gerarNovoMinerio(id = 0) {
+    let novoMinerio = escolherMinerio(id)
 
-    nomeMinerio = minerios[novoMinerio]["nome"]
+    nomeMinerio = mineriosDesbloqueados[novoMinerio]["nome"]
     nomeMinerioHTML.textContent = nomeMinerio
 
-    vidaAtualMinerio = minerios[novoMinerio]["vidaTotal"]
+    vidaAtualMinerio = mineriosDesbloqueados[novoMinerio]["vidaTotal"]
     vidaAtualMinerioHTML.textContent = vidaAtualMinerio
     vidaTotalMinerio = vidaAtualMinerio
     vidaTotalMinerioHTML.textContent = vidaAtualMinerio
+
+    let caminhoImagem = `imagens/minerios/${mineriosDesbloqueados[novoMinerio]["img"]}.webp`
+    imagemMinerioHTML.setAttribute("src", caminhoImagem)
 }
 
-function escolherMinerio() {
-    return Math.floor(Math.random() * (
-        Object.keys(minerios).length) + 1
-    )
+function escolherMinerio(id = 0) {
+    if (id === 0) {
+        return Math.floor(Math.random() * (
+            Object.keys(mineriosDesbloqueados).length) + 1
+        )
+    }
+    return id
 }
