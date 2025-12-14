@@ -1,18 +1,22 @@
 import { mineriosDesbloqueados } from "./minerios/mineriosDesbloqueados.js"
+import { salvar } from "./salvarInformacoes.js";
+import { carregarDanoPorClick, carregarDinheiro } from "./carregarInformacoes.js"
 
-let danoPorClick = 1;
+let danoPorClick = carregarDanoPorClick()
 
 const botaoMinerar = document.getElementById("btnMinerar");
 botaoMinerar.addEventListener("click", minerar)
 
 let minerioIdSpawnado = 1
 
-let dinheiro = 0
+let dinheiro = carregarDinheiro()
+let dinheiroHTML = document.getElementById('dinheiro')
+dinheiroHTML.textContent = dinheiro
+
 let vidaTotalMinerio = 0
 let vidaAtualMinerio = 0
 let nomeMinerio = ""
 
-let dinheiroHTML = document.getElementById('dinheiro')
 let vidaAtualMinerioHTML = document.getElementById('minerioVidaAtual')
 let vidaTotalMinerioHTML = document.getElementById('minerioVidaTotal')
 let nomeMinerioHTML = document.getElementById('minerioNome')
@@ -68,3 +72,17 @@ function atualizarDinheiro() {
     dinheiro += mineriosDesbloqueados[minerioIdSpawnado]["dinheiro"]
     dinheiroHTML.textContent = dinheiro
 }
+
+let tempoTotal = 0
+
+function main() {
+    setTimeout(() => {
+        if (tempoTotal % 60 === 0) {
+            salvar(danoPorClick, dinheiro)
+        }
+        tempoTotal += 1
+        main()
+    }, 1000);
+}
+
+main()
