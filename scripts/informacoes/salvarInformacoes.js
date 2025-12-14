@@ -10,7 +10,8 @@ function salvarDanoPorSegundo(danoPorSegundo) {
     localStorage.danoPorSegundo = danoPorSegundo
 }
 
-export function salvar(danoPorClick, dinheiro) {
+export function salvar(danoPorClick, dinheiro, danoPorSegundo) {
     salvardanoPorClick(danoPorClick)
     salvarDinheiro(dinheiro)
+    salvarDanoPorSegundo(danoPorSegundo)
 }

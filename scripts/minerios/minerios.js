@@ -1,4 +1,4 @@
-export const mineriosDesbloqueados = {
+export const mineriosExistentes = {
     1: {
         nome: "Carvão",
         "vidaTotal": 5,
