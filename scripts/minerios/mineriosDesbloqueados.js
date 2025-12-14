@@ -1,8 +1,8 @@
 export const mineriosDesbloqueados = {
     1: {
-        nome: "Carvão",
+        "nome": "Carvão",
         "vidaTotal": 5,
-        dinheiro: 1,
-        img: "carvao",
+        "dinheiro": 1,
+        "img": "carvao",
     },
 }

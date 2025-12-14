@@ -1,14 +1,18 @@
 import { mineriosDesbloqueados } from "./minerios/mineriosDesbloqueados.js"
 
-let danoPorClick = 50;
+let danoPorClick = 1;
 
 const botaoMinerar = document.getElementById("btnMinerar");
 botaoMinerar.addEventListener("click", minerar)
 
+let minerioIdSpawnado = 1
+
+let dinheiro = 0
 let vidaTotalMinerio = 0
 let vidaAtualMinerio = 0
 let nomeMinerio = ""
 
+let dinheiroHTML = document.getElementById('dinheiro')
 let vidaAtualMinerioHTML = document.getElementById('minerioVidaAtual')
 let vidaTotalMinerioHTML = document.getElementById('minerioVidaTotal')
 let nomeMinerioHTML = document.getElementById('minerioNome')
@@ -19,7 +23,7 @@ gerarNovoMinerio(1)
 function minerar() {
     atualizarVidaMinerio()
     if (verificarMinerioDestruido()) {
-        console.log("Gerando novo minério")
+        atualizarDinheiro()
         gerarNovoMinerio()
     }
 }
@@ -37,17 +41,17 @@ function verificarMinerioDestruido() {
 }
 
 function gerarNovoMinerio(id = 0) {
-    let novoMinerio = escolherMinerio(id)
+    minerioIdSpawnado = escolherMinerio(id)
 
-    nomeMinerio = mineriosDesbloqueados[novoMinerio]["nome"]
+    nomeMinerio = mineriosDesbloqueados[minerioIdSpawnado]["nome"]
     nomeMinerioHTML.textContent = nomeMinerio
 
-    vidaAtualMinerio = mineriosDesbloqueados[novoMinerio]["vidaTotal"]
+    vidaAtualMinerio = mineriosDesbloqueados[minerioIdSpawnado]["vidaTotal"]
     vidaAtualMinerioHTML.textContent = vidaAtualMinerio
     vidaTotalMinerio = vidaAtualMinerio
     vidaTotalMinerioHTML.textContent = vidaAtualMinerio
 
-    let caminhoImagem = `imagens/minerios/${mineriosDesbloqueados[novoMinerio]["img"]}.webp`
+    let caminhoImagem = `imagens/minerios/${mineriosDesbloqueados[minerioIdSpawnado]["img"]}.webp`
     imagemMinerioHTML.setAttribute("src", caminhoImagem)
 }
 
@@ -58,4 +62,9 @@ function escolherMinerio(id = 0) {
         )
     }
     return id
+}
+
+function atualizarDinheiro() {
+    dinheiro += mineriosDesbloqueados[minerioIdSpawnado]["dinheiro"]
+    dinheiroHTML.textContent = dinheiro
 }

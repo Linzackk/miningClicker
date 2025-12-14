@@ -1,8 +1,26 @@
+body {
+    height: 95vh;
+}
+
+header {
+    display: flex;
+    background-color: rgb(172, 172, 172);
+    width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+header > p{
+    font-size: 20px;
+    color: gold;
+}
+
 #telaJogo {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 95vh;
+    height: 80vh;
 }
 
 .telaMinerios {
